@@ -24,7 +24,9 @@ class AlphabetValidator extends ExpressionValidator
                 implode(
                     '',
                     array_map(
-                        'preg_quote',
+                        function (string $character) : string {
+                            return preg_quote($character, '/');
+                        },
                         iterator_to_array($alphabet)
                     )
                 )
